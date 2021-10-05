@@ -20,8 +20,6 @@ d3.json(samples).then(function(data) {
     let sampleSamples = data.samples.filter(e => e.id === sampleName);
     console.log("Sample Samples: ");
     console.log(sampleSamples);
-
-
   });
 
   data.names.forEach((name) => {
@@ -30,6 +28,25 @@ d3.json(samples).then(function(data) {
           .text(name)
           .property("value", name);
   });
+
+  function initBarPlot() {
+    let barData = [{
+      x: data.samples[0].sample_values.slice(0, 10).reverse(),
+      y: data.samples[0].otu_ids.map(e => `OTU ${e}`).slice(0, 10).reverse(),
+      text: data.samples[0].otu_labels.slice(0, 10).reverse(),
+
+      type: "bar",
+      orientation: 'h'
+    }];
+
+    let layout = {
+      height: 600,
+      width: 800
+    };
+
+    Plotly.newPlot("bar", barData, layout);
+  }
+  initBarPlot();
 
 
 });
