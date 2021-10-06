@@ -24,6 +24,7 @@ d3.json(samples).then(function(data) {
 
     updateBarChart(sampleSamples[0]);
     updateBubbleChart(sampleSamples[0]);
+    updateDemographicInfo(sampleMetadata[0]);
 
   });
 
@@ -115,6 +116,32 @@ d3.json(samples).then(function(data) {
     Plotly.newPlot("bubble", bubbleData, layout);
   }
 
+  function initDemographicInfo() {
+    let metadataSelector = d3.select("#sample-metadata");
+
+    // https://stackoverflow.com/questions/34913675/how-to-iterate-keys-values-in-javascript
+    for (const [key, value] of Object.entries(data.metadata[0])) {
+      console.log(key, value);
+      metadataSelector
+          .append("p")
+          .text(`${key}: ${value}`);
+    }
+  }
+
+  function updateDemographicInfo(metadata) {
+    let metadataSelector = d3.select("#sample-metadata");
+
+    metadataSelector.selectAll("p").remove();
+    // https://stackoverflow.com/questions/34913675/how-to-iterate-keys-values-in-javascript
+    for (const [key, value] of Object.entries(metadata)) {
+      console.log(key, value);
+      metadataSelector
+          .append("p")
+          .text(`${key}: ${value}`);
+    }
+  }
+
+
   // Function called by DOM changes
   function updateBubbleChart(sample) {
     let newBubbleData = {
@@ -133,5 +160,6 @@ d3.json(samples).then(function(data) {
 
   initBarPlot();
   initBubblePlot();
+  initDemographicInfo();
 
 });
