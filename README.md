@@ -27,4 +27,6 @@ To run this project the following tools are needed:
 
 * [Appending options to select box using D3](https://stackoverflow.com/questions/43121679/how-to-append-option-into-select-combo-box-in-d3)
 * [Iterating keys in Javascript](https://stackoverflow.com/questions/34913675/how-to-iterate-keys-values-in-javascript)
+* [Removing all children elements using D3](https://stackoverflow.com/questions/14422198/how-do-i-remove-all-children-elements-from-a-node-and-then-apply-them-again-with)
+* [Color ranges with plotly.js](https://code.tutsplus.com/tutorials/create-interactive-charts-using-plotlyjs-bubble-and-dot-charts--cms-29209)
 
