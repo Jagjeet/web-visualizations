@@ -1,0 +1,14 @@
+header {
+  font-family: 'Special Elite', cursive;
+  background-color: #d3d358;
+  /* background-color: #b6dd96; */
+}
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.1rem;
+}
+
+.dashboard__section {
+  margin: 1rem;
+}

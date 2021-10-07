@@ -41,13 +41,24 @@ d3.json(samples).then(function(data) {
       y: data.samples[0].otu_ids.map(e => `OTU ${e}`).slice(0, 10).reverse(),
       text: data.samples[0].otu_labels.slice(0, 10).reverse(),
       type: "bar",
-      orientation: 'h'
+      orientation: 'h',
+      marker: {color: '#b6dd96'},
     }];
 
     let layout = {
       height: 600,
-      width: 600
+      width: 600,
+      title: {
+        text: 'Subject Top 10 OTUs',
+        font: {
+          family: 'Special Elite',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      },
+      plot_bgcolor: '#fcfc9b',
     };
+
 
     Plotly.newPlot("bar", barData, layout);
   }
@@ -80,14 +91,25 @@ d3.json(samples).then(function(data) {
       marker: {
         size: data.samples[0].sample_values,
         color: data.samples[0].otu_ids,
+        // colorscale: [[0, 'rgb(200, 255, 200)'], [1, 'rgb(0, 100, 0)']]
+        colorscale: 'Portland'
       },
-      text: data.samples[0].otu_labels
+      text: data.samples[0].otu_labels,
+      // color: 'x'
     };
 
     let bubbleData = [trace1];
 
     let layout = {
-      title: `OTU IDs Vs Sample Values`,
+      plot_bgcolor: '#fcfc9b',
+      title: {
+        text: 'OTU IDs Vs Sample Values',
+        font: {
+          family: 'Special Elite',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      },
       showlegend: false,
       height: 600,
       width: 1200,
@@ -95,7 +117,7 @@ d3.json(samples).then(function(data) {
         title: {
           text: 'OTU IDs',
           font: {
-            family: 'Courier New, monospace',
+            family: 'Open Sans Condensed',
             size: 18,
             color: '#7f7f7f'
           }
@@ -105,7 +127,7 @@ d3.json(samples).then(function(data) {
         title: {
           text: 'Sample Values',
           font: {
-            family: 'Courier New, monospace',
+            family: 'Open Sans Condensed',
             size: 18,
             color: '#7f7f7f'
           }
@@ -151,6 +173,7 @@ d3.json(samples).then(function(data) {
       marker: [{
         size: sample.sample_values,
         color: sample.otu_ids,
+        colorscale: 'Portland'
       }],
       text: [sample.otu_labels]
     };
